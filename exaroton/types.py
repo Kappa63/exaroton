@@ -170,3 +170,21 @@ class CreditPoolMember(ExarotonType):
         self.share = share
         self.credits = credits
         self.isOwner = isOwner
+
+class Stat(ExarotonType):
+    usage:float
+    percent:float
+    limit:float
+
+    def __init__(self, usage, percent, limit=None):
+        self.usage = usage
+        self.limit = limit
+        self.percent = percent
+
+class Stats(ExarotonType):
+    memory: Stat
+    cpu: Stat
+
+    def __init__(self, memory: Stat, cpu:Stat) -> None:
+        self.memory = memory
+        self.cpu = cpu
